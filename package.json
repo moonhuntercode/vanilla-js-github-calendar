@@ -1,6 +1,6 @@
 {
   "name": "vanilla-js-github-calendar",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Web Component to display a GitHub contributions calendar",
   "author": "moonhuntercode",
   "license": "MIT",
@@ -19,7 +19,7 @@
     "dev": "vite",
     "build": "vite build",
     "build:docs": "vite build -c vite.docs.config.js",
-    "preview": "vite preview",
+    "preview": "vite preview -c vite.docs.config.js",
     "test": "vitest",
     "format": "prettier --write .",
     "lint": "eslint ."
