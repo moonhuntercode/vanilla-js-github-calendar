@@ -1,8 +1,12 @@
-# Vanilla JS GitHub Calendar
+# 📅 Vanilla JS GitHub Calendar
 
-A lightweight, dependency-free Web Component to display a GitHub contributions calendar.
+[![NPM Version](https://img.shields.io/npm/v/vanilla-js-github-calendar.svg)](https://www.npmjs.com/package/vanilla-js-github-calendar)
+[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen.svg)](https://moonhuntercode.github.io/vanilla-js-github-calendar/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-No React, no complex setups—just pure HTML, CSS, and Vanilla JavaScript. Built natively using Custom Elements and Shadow DOM, making it incredibly easy to drop into any project.
+A lightweight, dependency-free Web Component that displays a GitHub contributions calendar (heatmap) for any user. Built with pure Vanilla JS, HTML5, and CSS3.
+
+🚀 **[View the Live Demo!](https://moonhuntercode.github.io/vanilla-js-github-calendar/)**
 
 ![Screenshot](preview.png)
 
