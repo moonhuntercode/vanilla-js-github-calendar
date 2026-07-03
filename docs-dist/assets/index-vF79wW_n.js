@@ -1,0 +1,22 @@
+(function(){let e=document.createElement(`link`).relList;if(e&&e.supports&&e.supports(`modulepreload`))return;for(let e of document.querySelectorAll(`link[rel="modulepreload"]`))n(e);new MutationObserver(e=>{for(let t of e)if(t.type===`childList`)for(let e of t.addedNodes)e.tagName===`LINK`&&e.rel===`modulepreload`&&n(e)}).observe(document,{childList:!0,subtree:!0});function t(e){let t={};return e.integrity&&(t.integrity=e.integrity),e.referrerPolicy&&(t.referrerPolicy=e.referrerPolicy),e.crossOrigin===`use-credentials`?t.credentials=`include`:e.crossOrigin===`anonymous`?t.credentials=`omit`:t.credentials=`same-origin`,t}function n(e){if(e.ep)return;e.ep=!0;let n=t(e);fetch(e.href,n)}})();var e=(e,n)=>{if(typeof n!=`function`)return e;let r=n(e);if(!Array.isArray(r))throw Error(`transformData() function must return a list of Activity objects.`);for(let e of r){if(!t(e))throw Error(`transformData() must return a list of valid Activity objects.`);if(typeof e.count!=`number`||e.count<0)throw Error(`Required property "count: number" missing or invalid. Got: ${e.count}`);if(typeof e.date!=`string`||!/\d{4}-\d{2}-\d{2}/.test(e.date))throw Error(`Required property "date: YYYY-MM-DD" missing or invalid. Got: ${e.date}`);if(typeof e.level!=`number`||e.level<0||e.level>4)throw Error(`Required property "level: 0 | 1 | 2 | 3 | 4" missing or invalid: Got: ${e.level}.`)}return r},t=e=>Object.prototype.toString.call(e)===`[object Object]`;async function n(e,t){let n=await fetch(`https://github-contributions-api.jogruber.de/v4/${e}?y=${t}`),r=await n.json();if(!n.ok)throw Error(`Fetching GitHub contribution data for "${e}" failed: ${r.error}`);return r}var r=class extends HTMLElement{constructor(){super(),this.useShadow=this.hasAttribute(`shadow`),this.useShadow?this.root=this.attachShadow({mode:`open`}):this.root=this}static get observedAttributes(){return[`username`,`year`,`shadow`]}attributeChangedCallback(e,t,n){t!==n&&(e===`shadow`||this.render())}connectedCallback(){this.render()}async render(){let t=this.getAttribute(`username`),r=this.getAttribute(`year`)||`last`;if(!t){this.root.innerHTML=`<div class="vghc-error">Username attribute is required</div>`,console.error(`[GitHubCalendar] Error: Username attribute is required.`),this.dispatchEvent(new CustomEvent(`calendar-error`,{detail:{message:`Username is required`},bubbles:!0,composed:!0}));return}this.root.innerHTML=`<div class="vghc-loading">Loading contributions for ${t}...</div>`;try{let i=await n(t,r),a=e(i.contributions),o=Object.values(i.total)[0]||0,s=r===`last`?`the last year`:r,c=`<div class="vghc-grid" role="grid" aria-label="GitHub Contributions Calendar">`;for(let e of a){let t=new Date(e.date).toLocaleDateString(void 0,{month:`short`,day:`numeric`,year:`numeric`}),n=`${e.count===0?`No contributions`:e.count+` contributions`} on ${t}`;c+=`<div class="vghc-day" role="gridcell" aria-label="${n}" data-level="${e.level}" data-tooltip="${n}"></div>`}c+=`</div>`,this.root.innerHTML=`
+        <section class="vghc-wrapper">
+          <header class="vghc-header">
+            <h3 class="vghc-title">${o} contributions in ${s}</h3>
+          </header>
+          
+          ${c}
+          
+          <footer class="vghc-footer">
+            <a href="https://github.com/${t}" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">Learn how we count contributions</a>
+            <div class="vghc-legend" aria-hidden="true">
+              <span>Less</span>
+              <div class="vghc-legend-item" data-level="0"></div>
+              <div class="vghc-legend-item" data-level="1"></div>
+              <div class="vghc-legend-item" data-level="2"></div>
+              <div class="vghc-legend-item" data-level="3"></div>
+              <div class="vghc-legend-item" data-level="4"></div>
+              <span>More</span>
+            </div>
+          </footer>
+        </section>
+      `,console.info(`[GitHubCalendar] Successfully loaded data for ${t}`),this.dispatchEvent(new CustomEvent(`calendar-loaded`,{detail:{username:t,totalCount:o},bubbles:!0,composed:!0}))}catch(e){this.root.innerHTML=`<div class="vghc-error">${e.message||`Error loading data`}</div>`,console.error(`[GitHubCalendar] Error: ${e.message}`),this.dispatchEvent(new CustomEvent(`calendar-error`,{detail:{message:e.message},bubbles:!0,composed:!0}))}}};customElements.get(`github-calendar`)||customElements.define(`github-calendar`,r);
