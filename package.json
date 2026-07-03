@@ -9,7 +9,13 @@
     "type": "git",
     "url": "git+https://github.com/moonhuntercode/vanilla-js-github-calendar.git"
   },
-  "keywords": ["github", "calendar", "contributions", "webcomponent", "vanilla-js"],
+  "keywords": [
+    "github",
+    "calendar",
+    "contributions",
+    "webcomponent",
+    "vanilla-js"
+  ],
   "exports": {
     ".": "./dist/vanilla-js-github-calendar.js",
     "./styles.css": "./dist/vanilla-js-github-calendar.css"
@@ -27,13 +33,17 @@
     "lint": "eslint ."
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "eslint": "^10.6.0",
+    "globals": "^17.7.0",
     "jsdom": "^29.1.1",
     "prettier": "^3.0.0",
     "vite": "^8.1.1",
     "vitest": "^4.1.9"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "browserslist": [
     "last 1 chrome version",
     "last 1 firefox version",
