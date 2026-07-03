@@ -53,20 +53,10 @@ We've designed this library to be incredibly beginner-friendly and robust. Pleas
 - 🏗️ [Architecture & Developer Experience (DX)](ARCHITECTURE_AND_DX.md): Learn about the Light DOM vs Shadow DOM, TypeScript typing, and Custom Events for error handling.
 - 📏 [Advanced Layout & Browser Compatibility](ADVANCED_LAYOUT_AND_COMPATIBILITY.md): How to embed the calendar in Flex/Grid dashboards and the ES6+ browser support matrix.
 
-## Development
+## 🤝 Contributing
 
-Want to contribute or run the examples locally?
+We welcome contributions from the community! If you'd like to help make this project better, please check out our repository on GitHub:
 
-```shell
-# 1. Install dependencies
-npm install
+🐙 **[moonhuntercode/vanilla-js-github-calendar](https://github.com/moonhuntercode/vanilla-js-github-calendar)**
 
-# 2. Start the Vite dev server with interactive examples
-npm run dev
-
-# 3. Build the library
-npm run build
-
-# 4. Run tests
-npm run test
-```
+Please read our full **[Contributing Guide (CONTRIBUTING.md)](CONTRIBUTING.md)** for detailed instructions on how to set up the development environment, run the Vite server, and execute our Vitest test suite.
