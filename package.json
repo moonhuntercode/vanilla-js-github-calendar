@@ -1,68 +1,37 @@
 {
-  "name": "react-github-calendar",
-  "version": "5.0.6",
-  "description": " React component to display a GitHub contributions calendar",
-  "author": "Jonathan Gruber <gruberjonathan@gmail.com>",
+  "name": "vanilla-js-github-calendar",
+  "version": "1.1.0",
+  "description": "Web Component to display a GitHub contributions calendar",
+  "author": "moonhuntercode",
   "license": "MIT",
-  "homepage": "https://grubersjoe.github.io/react-github-calendar/",
+  "homepage": "https://github.com/moonhuntercode",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/grubersjoe/react-github-calendar.git"
+    "url": "git+https://github.com/moonhuntercode/vanilla-js-github-calendar.git"
   },
   "exports": {
-    ".": "./build/index.js",
-    "./tooltips.css": "./build/tooltips.css"
+    ".": "./dist/vanilla-js-github-calendar.js",
+    "./styles.css": "./dist/vanilla-js-github-calendar.css"
   },
   "type": "module",
-  "types": "build/index.d.ts",
+  "types": "./src/index.d.ts",
   "scripts": {
-    "build": "rollup -c",
-    "check": "pnpm install --frozen-lockfile && pnpm exec prettier -c . && pnpm typecheck && pnpm lint",
-    "deploy": "gh-pages -d example/build",
-    "dev": "rollup -c -w",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest",
     "format": "prettier --write .",
-    "lint": "eslint .",
-    "postbuild": "dts-bundle-generator src/index.tsx -o build/index.d.ts --no-check --no-banner",
-    "predeploy": "pnpm build && cd example && pnpm install && pnpm build",
-    "prepare": "husky",
-    "prepublishOnly": "pnpm check && pnpm build",
-    "publish": "pnpm publish --access=public",
-    "typecheck": "tsc -p tsconfig.json && tsc -p example/tsconfig.json"
-  },
-  "dependencies": {
-    "react-activity-calendar": "^3.1.2"
+    "lint": "eslint ."
   },
   "devDependencies": {
-    "@babel/core": "^7.28.6",
-    "@babel/preset-env": "^7.29.2",
-    "@babel/preset-react": "^7.27.1",
-    "@babel/preset-typescript": "^7.27.1",
-    "@eslint/js": "^10.0.1",
-    "@ianvs/prettier-plugin-sort-imports": "^4.3.1",
-    "@rollup/plugin-babel": "^7.0.0",
-    "@rollup/plugin-node-resolve": "^16.0.3",
-    "@tsconfig/bases": "^1.0.24",
-    "@types/react": "^19.2.9",
-    "dts-bundle-generator": "^9.5.1",
-    "eslint": "^10.4.0",
-    "eslint-plugin-react": "^7.37.3",
-    "eslint-plugin-react-hooks": "^7.0.0",
-    "gh-pages": "^6.3.0",
-    "globals": "^17.5.0",
-    "husky": "^9.1.7",
-    "prettier": "^3.8.2",
-    "react": "^19.2.5",
-    "rollup": "^4.60.4",
-    "rollup-plugin-copy": "^3.5.0",
-    "rollup-plugin-filesize": "^10.0.0",
-    "typescript": "^6.0.2",
-    "typescript-eslint": "^8.59.4"
-  },
-  "peerDependencies": {
-    "react": "^18.0.0 || ^19.0.0"
+    "eslint": "^8.57.0",
+    "jsdom": "^29.1.1",
+    "prettier": "^3.0.0",
+    "vite": "^8.1.1",
+    "vitest": "^4.1.9"
   },
   "files": [
-    "build"
+    "dist"
   ],
   "browserslist": [
     "last 1 chrome version",

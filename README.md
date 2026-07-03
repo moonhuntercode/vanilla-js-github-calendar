@@ -1,92 +1,68 @@
-# React GitHub Calendar
+# Vanilla JS GitHub Calendar
 
-[![CI](https://github.com/grubersjoe/react-github-calendar/actions/workflows/test.yml/badge.svg)](https://github.com/grubersjoe/react-github-calendar/actions/workflows/test.yml)
-[![npm version](https://badge.fury.io/js/react-github-calendar.svg)](https://www.npmjs.com/package/react-github-calendar)
+A lightweight, dependency-free Web Component to display a GitHub contributions calendar.
 
-A React component to display a GitHub contributions calendar based on
-[`react-activity-calendar`](https://github.com/grubersjoe/react-activity-calendar) and
-[`github-contributions-api`](https://github.com/grubersjoe/github-contributions-api).
-
-**Version 5** has been released 🎉<br>See the list of
-[breaking changes](https://github.com/grubersjoe/react-github-calendar/releases/tag/v5.0).
+No React, no complex setups—just pure HTML, CSS, and Vanilla JavaScript. Built natively using Custom Elements and Shadow DOM, making it incredibly easy to drop into any project.
 
 ![Screenshot](preview.png)
 
-[Demo and documentation](https://grubersjoe.github.io/react-github-calendar/)
+## Features
 
-<a href="https://www.buymeacoffee.com/grubersjoe">
-  <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 32px;" >
-</a>
+- **No Dependencies**: Pure Vanilla JS Web Component (`<github-calendar>`).
+- **Semantic HTML**: Built with accessible and clean HTML5 elements.
+- **Mobile-First & Responsive**: Includes smooth touch horizontal scrolling for perfect display on phones.
+- **Easy Customization**: Uses CSS Custom Properties for painless color themes (Purple, Blue, Dark Mode, etc.).
+- **Vite Powered**: Blazing fast modern ESM tooling.
 
-## Installation
+## Quick Start
+
+### 1. Installation
 
 ```shell
-npm install react-github-calendar
+npm install vanilla-js-github-calendar
 ```
 
-## Usage
+### 2. Usage in HTML
 
-<!-- prettier-ignore -->
-```tsx
-import { GitHubCalendar } from 'react-github-calendar';
+Simply include the script and use the `<github-calendar>` HTML tag. No JavaScript configuration required!
 
-<GitHubCalendar username="grubersjoe" />
+```html
+<head>
+  <!-- 1. Include the external stylesheet -->
+  <link rel="stylesheet" href="node_modules/vanilla-js-github-calendar/dist/vanilla-js-github-calendar.css">
+</head>
+<body>
+  <!-- 2. Include the script (ESM) -->
+  <script type="module" src="node_modules/vanilla-js-github-calendar/dist/vanilla-js-github-calendar.js"></script>
+
+  <!-- 3. Add the custom element with your username -->
+  <github-calendar username="moonhuntercode"></github-calendar>
+</body>
 ```
 
-## FAQ
+## Documentation & Guides
 
-### Is server side rendering (SSR) supported?
+We've designed this library to be incredibly beginner-friendly and robust. Please check out our dedicated guides:
 
-Yes. However, not with this component because it fetches data client-side. For SSR support, you can
-fetch the GitHub contribution data from a suitable
-[API](https://github.com/grubersjoe/github-contributions-api) server-side and pass it on to the
-internally used [`react-activity-calendar`](https://github.com/grubersjoe/react-activity-calendar)
-component. See the
-[source code](https://github.com/grubersjoe/react-github-calendar/blob/main/src/index.tsx) as
-example and the GitHub color theme.
-
-### Why is Create React App unsupported?
-
-Create React App (CRA) is considered
-[abandoned](https://github.com/facebook/create-react-app/discussions/11086), and you probably should
-not use it anymore (more
-[background](https://github.com/facebook/create-react-app/issues/11180#issuecomment-874748552)).
-Using this component inside CRA will lead to errors for reasons described in issue
-[#105](https://github.com/grubersjoe/react-activity-calendar/issues/105) of
-`react-activity-calendar`. This repo is not for CRA support questions. If you encounter issues, you
-need to fix those yourself given the maintenance state of CRA. Personally, I would recommend using
-[Vite](https://vitejs.dev/) instead of CRA. It offers everything that CRA does and more.
+- 📖 [Usage & Theming Guide](USAGE_AND_THEMING.md): Learn how to change colors, tooltips, and background themes effortlessly using pure CSS variables.
+- 🎨 [Advanced Customization Guide](CUSTOMIZATION_GUIDE.md): Deep dive into how the component works internally, its semantic HTML structure, and how its Mobile-First responsive CSS works.
+- 🏗️ [Architecture & Developer Experience (DX)](ARCHITECTURE_AND_DX.md): Learn about the Light DOM vs Shadow DOM, TypeScript typing, and Custom Events for error handling.
+- 📏 [Advanced Layout & Browser Compatibility](ADVANCED_LAYOUT_AND_COMPATIBILITY.md): How to embed the calendar in Flex/Grid dashboards and the ES6+ browser support matrix.
 
 ## Development
 
-Start watch mode for the library first:
+Want to contribute or run the examples locally?
 
 ```shell
+# 1. Install dependencies
 npm install
-npm dev
-```
 
-Then start watch mode of example page:
+# 2. Start the Vite dev server with interactive examples
+npm run dev
 
-```shell
-cd example
-npm install
-npm dev
-```
+# 3. Build the library
+npm run build
 
-Open http://localhost:3000.
-
-### Publish a new release
-
-```shell
-npm publish --dry-run
-
-# When you're happy
-npm publish --access=public
-```
-
-### Update demo page
-
-```shell
-npm run deploy
+# 4. Run tests
+npm run test
 ```

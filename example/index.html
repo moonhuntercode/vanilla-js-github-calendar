@@ -1,19 +1,136 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta
-      name="description"
-      content="A React component to display a GitHub contributions calendar"
-    />
-    <meta name="author" content="Jonathan Gruber" />
-    <title>React GitHub Calendar</title>
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vanilla JS GitHub Calendar - Examples</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f6f8fa;
+      color: #24292f;
+    }
+    .card {
+      background: white;
+      border: 1px solid #d0d7de;
+      border-radius: 6px;
+      padding: 20px;
+      margin-bottom: 30px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      width: 100%;
+      box-sizing: border-box;
+      overflow: hidden; /* Ensure content doesn't break out on small screens */
+    }
+    h2 {
+      margin-top: 0;
+      font-size: 1.2rem;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+    .search-box {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    input[type="text"] {
+      padding: 8px 12px;
+      border: 1px solid #d0d7de;
+      border-radius: 6px;
+      font-size: 14px;
+      flex-grow: 1;
+      max-width: 300px;
+    }
+    button {
+      background-color: #2da44e;
+      color: white;
+      border: 1px solid rgba(27,31,35,0.15);
+      border-radius: 6px;
+      padding: 5px 16px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+    button:hover { background-color: #2c974b; }
+    
+    /* 
+      Example: Purple Theme 
+      Using CSS variables to override the Shadow DOM styles
+    */
+    .theme-purple {
+      --gh-calendar-level-1: #e1b4f4;
+      --gh-calendar-level-2: #c57de9;
+      --gh-calendar-level-3: #a34bcf;
+      --gh-calendar-level-4: #7925a8;
+      --gh-calendar-tooltip-bg: #4c116d;
+    }
 
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <script type="module" src="/src/index.tsx"></script>
-  </body>
+    /* 
+      Example: Ocean Blue Theme 
+    */
+    .theme-blue {
+      --gh-calendar-level-1: #b4d8f4;
+      --gh-calendar-level-2: #7dbce9;
+      --gh-calendar-level-3: #4b9ccf;
+      --gh-calendar-level-4: #2579a8;
+    }
+    
+    /* Mobile responsive tweaks */
+    @media (max-width: 600px) {
+      body { padding: 10px; }
+      .card { padding: 15px; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Vanilla JS GitHub Calendar Examples</h1>
+  
+  <div class="card">
+    <h2>1. Dynamic User (Mobile First)</h2>
+    <p>The grid supports horizontal scrolling on mobile automatically. Try searching for any GitHub user to see how easily reusable the component is!</p>
+    
+    <div class="search-box">
+      <input type="text" id="usernameInput" value="moonhuntercode" placeholder="Enter GitHub username...">
+      <button id="updateUserBtn">Update Calendar</button>
+    </div>
+
+    <!-- The Web Component -->
+    <github-calendar id="dynamicCalendar" username="moonhuntercode"></github-calendar>
+    
+    <script>
+      const btn = document.getElementById('updateUserBtn');
+      const input = document.getElementById('usernameInput');
+      const cal = document.getElementById('dynamicCalendar');
+      
+      const updateUsername = () => {
+        const val = input.value.trim();
+        if(val) cal.setAttribute('username', val);
+      };
+      
+      btn.addEventListener('click', updateUsername);
+      input.addEventListener('keypress', (e) => {
+        if(e.key === 'Enter') updateUsername();
+      });
+    </script>
+  </div>
+
+  <div class="card theme-purple">
+    <h2>2. Purple Theme</h2>
+    <p>Customizing the colors is as simple as overriding the CSS variables on the container.</p>
+    <github-calendar username="moonhuntercode"></github-calendar>
+  </div>
+
+  <div class="card theme-blue">
+    <h2>3. Ocean Blue Theme</h2>
+    <p>Another example of CSS variable overriding.</p>
+    <github-calendar username="moonhuntercode"></github-calendar>
+  </div>
+
+  <!-- Import the Web Component (In production, use the dist build) -->
+  <script type="module" src="../src/index.js"></script>
+</body>
 </html>
