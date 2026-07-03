@@ -1,18 +1,20 @@
 {
   "name": "vanilla-js-github-calendar",
-  "version": "1.1.3",
-  "description": "Web Component to display a GitHub contributions calendar",
+  "version": "1.1.4",
+  "description": "Lightweight Web Component to render GitHub contributions calendar in vanilla JS",
   "author": "moonhuntercode",
   "license": "MIT",
-  "homepage": "https://github.com/moonhuntercode",
+  "homepage": "https://github.com/moonhuntercode/vanilla-js-github-calendar#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/moonhuntercode/vanilla-js-github-calendar.git"
   },
+  "keywords": ["github", "calendar", "contributions", "webcomponent", "vanilla-js"],
   "exports": {
     ".": "./dist/vanilla-js-github-calendar.js",
     "./styles.css": "./dist/vanilla-js-github-calendar.css"
   },
+  "main": "./dist/vanilla-js-github-calendar.js",
   "type": "module",
   "types": "./src/index.d.ts",
   "scripts": {
@@ -31,9 +33,7 @@
     "vite": "^8.1.1",
     "vitest": "^4.1.9"
   },
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "browserslist": [
     "last 1 chrome version",
     "last 1 firefox version",
