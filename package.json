@@ -1,6 +1,6 @@
 {
   "name": "vanilla-js-github-calendar",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "Lightweight Web Component to render GitHub contributions calendar in vanilla JS",
   "author": "moonhuntercode",
   "license": "MIT",

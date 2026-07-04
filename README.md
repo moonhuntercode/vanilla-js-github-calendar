@@ -26,9 +26,82 @@ A lightweight, dependency-free Web Component that displays a GitHub contribution
 npm install vanilla-js-github-calendar
 ```
 
-### 2. Usage in HTML
+### 2. Usage
 
-Simply include the script and use the `<github-calendar>` HTML tag. No JavaScript configuration required!
+You can use this library in several ways depending on your setup. In all cases, simply add the custom element with your username anywhere in your HTML:
+```html
+<github-calendar username="moonhuntercode"></github-calendar>
+```
+
+#### Option A: Using a CDN (Easiest, no build tools required)
+The fastest way to use the library in plain HTML without installing anything locally:
+
+```html
+<head>
+  <!-- Include the external stylesheet -->
+  <link rel="stylesheet" href="https://unpkg.com/vanilla-js-github-calendar/dist/vanilla-js-github-calendar.css">
+</head>
+<body>
+  <!-- Include the script directly from CDN -->
+  <script type="module" src="https://unpkg.com/vanilla-js-github-calendar"></script>
+  
+  <github-calendar username="moonhuntercode"></github-calendar>
+</body>
+```
+
+#### Option B: Modern Bundlers (Vite, Webpack, React, Vue, etc.)
+If you are using a modern frontend framework or a bundler, you split the usage between your HTML and your JavaScript entry point.
+
+**1. In your JavaScript file (e.g., `main.js`):**
+```javascript
+// Import the component (automatically registers the <github-calendar> tag)
+import 'vanilla-js-github-calendar';
+
+// Import the CSS (if your bundler supports CSS imports)
+import 'vanilla-js-github-calendar/styles.css';
+```
+
+**2. In your HTML file (e.g., `index.html`):**
+```html
+<body>
+  <!-- Link your JavaScript file -->
+  <script type="module" src="/main.js"></script>
+
+  <!-- Add the component anywhere -->
+  <github-calendar username="moonhuntercode"></github-calendar>
+</body>
+```
+
+#### Option C: Local Files via Import Maps (Vanilla HTML)
+If you installed the package via npm but want to use it in plain HTML without a bundler, you can use Import Maps to keep paths clean:
+
+```html
+<head>
+  <!-- 1. Include the external stylesheet -->
+  <link rel="stylesheet" href="./node_modules/vanilla-js-github-calendar/dist/vanilla-js-github-calendar.css">
+
+  <!-- 2. Define the import map -->
+  <script type="importmap">
+  {
+    "imports": {
+      "vanilla-js-github-calendar": "./node_modules/vanilla-js-github-calendar/dist/vanilla-js-github-calendar.js"
+    }
+  }
+  </script>
+</head>
+<body>
+  <!-- 3. Import gracefully! -->
+  <script type="module">
+    import 'vanilla-js-github-calendar';
+  </script>
+
+  <!-- 4. Add the component -->
+  <github-calendar username="moonhuntercode"></github-calendar>
+</body>
+```
+
+#### Option D: Classic Local Files (Direct Script Tag)
+If you prefer the classic method without import maps after running `npm install`:
 
 ```html
 <head>
